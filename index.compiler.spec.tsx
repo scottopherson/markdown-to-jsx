@@ -3724,6 +3724,21 @@ Yeah boi
       </pre>
     `)
   })
+
+  it('should not require to be preceded by two newlines', () => {
+    render(compiler(['some preceding text', '```js', 'foo', '```'].join('\n')))
+
+    expect(root.innerHTML).toMatchInlineSnapshot(`
+      <div>
+        <p>some preceding text</p>
+        <pre>
+          <code class="lang-js">
+            foo
+          </code>
+        </pre>
+      </div>
+    `)
+  })
 })
 
 describe('indented code blocks', () => {
